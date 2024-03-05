@@ -16,6 +16,7 @@ public class DuckSpawner : MonoBehaviour
     public GameObject[] antys;
     private Transform spawnerTransform;
 
+
     void Start()
     {
         spawnerTransform = transform;
@@ -35,7 +36,9 @@ public class DuckSpawner : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > 3.8f)
+
+
+        if (time > 1.5f)
         {
             int random0Antis = Random.Range(0, 3);
             GameObject selectedAntis;
@@ -60,6 +63,9 @@ public class DuckSpawner : MonoBehaviour
                 newAntis.GetComponent<DuckMovement>().duckSpawner = this;
             else
                 newAntis.GetComponent<DuckMovement>().duckSpawner = this;
+
+
+
             time = 0;
         }
         

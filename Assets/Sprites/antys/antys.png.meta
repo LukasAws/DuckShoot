@@ -126,12 +126,12 @@ TextureImporter:
       name: antys_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1920
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 57
+        y: 2112
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: antys_1
       rect:
         serializedVersion: 2
-        x: 960
-        y: 1920
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1017
+        y: 2112
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: antys_2
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1920
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1977
+        y: 2112
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: antys_3
       rect:
         serializedVersion: 2
-        x: 2880
-        y: 1920
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3057
+        y: 2112
+        width: 651
+        height: 531
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: antys_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 960
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 57
+        y: 1152
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: antys_5
       rect:
         serializedVersion: 2
-        x: 960
-        y: 960
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1017
+        y: 1152
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: antys_6
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 960
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1977
+        y: 1152
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: antys_7
       rect:
         serializedVersion: 2
-        x: 2880
-        y: 960
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3057
+        y: 1152
+        width: 651
+        height: 531
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,12 +294,12 @@ TextureImporter:
       name: antys_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 57
+        y: 192
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: antys_9
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1017
+        y: 192
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: antys_10
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1977
+        y: 192
+        width: 771
+        height: 591
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: antys_11
       rect:
         serializedVersion: 2
-        x: 2880
-        y: 0
-        width: 960
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3057
+        y: 192
+        width: 651
+        height: 531
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
