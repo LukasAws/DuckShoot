@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BangosJuda : MonoBehaviour
 {
@@ -28,15 +23,15 @@ public class BangosJuda : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // animate the position of the game object...
+        // smoothly move the object from min to max
         this.transform.position = new Vector3(Mathf.SmoothStep(min, max, t), transform.position.y, transform.position.z);
 
-        // .. and increase the t interpolater
+        // increase the interpolator
         t += 0.4f * Time.deltaTime;
 
         // now check if the interpolator has reached 1.0
         // and swap maximum and minimum so game object moves
-        // in the opposite direction.
+        // in the right direction
         if (t > 1.0f)
         {
             float temp = max;
