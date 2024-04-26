@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GunShootsDuck : MonoBehaviour
 {
+    public int score = 0;
+
     void Update()
     {
         // Check if left mouse button is clicked
@@ -19,7 +21,12 @@ public class GunShootsDuck : MonoBehaviour
                 // Check if the hit object has the tag "Antis"
                 if (hitObject.transform.CompareTag("Antis"))
                 {
+                    if (!hitObject.GetComponent<DuckMovement>().isShot)
+                        score++;
+
                     hitObject.GetComponent<DuckMovement>().isShot = true;
+                    
+
                 }
             }
         }

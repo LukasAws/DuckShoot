@@ -10,8 +10,6 @@ public class DuckSpawner : MonoBehaviour
     public GameObject[] antys;
     private Transform spawnerTransform;
 
-    float time;
-
     public bool duckiesSpawnable;
 
     GameObject lastDuckSpawned;
@@ -61,7 +59,6 @@ public class DuckSpawner : MonoBehaviour
 
             SpawnDuckies(newAntis, selectedAntis);
 
-            time = 0;
         }
 
     }
