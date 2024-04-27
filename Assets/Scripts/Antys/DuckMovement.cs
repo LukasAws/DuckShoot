@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DuckMovement : MonoBehaviour
 {
-    public DuckSpawner duckSpawner;
+    public DuckSpawner? duckSpawner;
 
     private float x = 2;
     [SerializeField]

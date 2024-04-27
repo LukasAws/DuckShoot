@@ -20,7 +20,7 @@ public class DialogManager : MonoBehaviour
     private bool dialogFinished = true; // Flag to prevent starting the same dialog again
     private int currentDialogueIndex = 0;
     private bool isTyping = false;
-    private bool dialogStarted = false;
+    public bool dialogStarted = false;
     private int nextDialogIndex = 0; // Index of the next dialog to be started
     private bool dialogBoxInMotion = false; // Flag to track if the dialog box is moving
 
