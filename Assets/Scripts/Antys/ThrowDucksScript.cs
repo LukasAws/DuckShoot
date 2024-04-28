@@ -29,6 +29,7 @@ public class DogAnimationController : MonoBehaviour
             duck.transform.SetParent(dogAnimator.transform, true);
             // Trigger the "Middle" animation of the duck
             duckThrown = false;
+            duck.GetComponent<DuckMovement>().isShot = false;
         }
     }
 

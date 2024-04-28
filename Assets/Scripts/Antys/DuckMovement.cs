@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DuckMovement : MonoBehaviour
 {
-    public DuckSpawner? duckSpawner;
+    public DuckSpawner duckSpawner;
 
     private float x = 2;
     [SerializeField]
@@ -11,8 +11,11 @@ public class DuckMovement : MonoBehaviour
 
     public bool isShot = false;
     public bool isChild = false;
+    public bool isThrowable = false;
 
     public DuckSpawner.DuckDirection duckDirection;
+
+    public bool beMovable = true;
 
     Quaternion originalRot;
     // Start is called before the first frame update
@@ -24,26 +27,29 @@ public class DuckMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = GetAppropriateSpeed();
-
-        if (duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left)
-            transform.position = new Vector3(transform.position.x - x, transform.position.y, transform.position.z);
-        else
-            transform.position = new Vector3(transform.position.x + x, transform.position.y, transform.position.z);
-
-        if (
-                (transform.position.x < -8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left) ||
-                (transform.position.x > 8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Right)
-            )
-        Destroy(this.gameObject); // when reached edge - destroy it
-            
-            
-        if (t < 1f && isShot && !isChild)
+        if (beMovable)
         {
-            transform.localRotation = Quaternion.Euler(Mathf.Lerp(0, 90, t), (1-(float)duckSpawner.spawnerDuckDirection)*180, transform.localRotation.z);
+            x = GetAppropriateSpeed();
 
-            t += 2f * Time.deltaTime;
+            if (duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left)
+                transform.position = new Vector3(transform.position.x - x, transform.position.y, transform.position.z);
+            else
+                transform.position = new Vector3(transform.position.x + x, transform.position.y, transform.position.z);
+
+            if (
+                    (transform.position.x < -8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left) ||
+                    (transform.position.x > 8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Right)
+                )
+                Destroy(this.gameObject); // when reached edge - destroy it
+
+            if (t < 1f && isShot && !isChild)
+            {
+                transform.localRotation = Quaternion.Euler(Mathf.Lerp(0, 90, t), (1 - (float)duckSpawner.spawnerDuckDirection) * 180, transform.localRotation.z);
+
+                t += 2f * Time.deltaTime;
+            }
         }
+        
     }
 
     private void LateUpdate()
@@ -61,4 +67,6 @@ public class DuckMovement : MonoBehaviour
         
         return 0.5f * speed * Time.deltaTime; // return normal speed
     }
+
+
 }

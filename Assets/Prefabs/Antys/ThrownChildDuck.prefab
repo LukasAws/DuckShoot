@@ -187,3 +187,4 @@ MonoBehaviour:
   isShot: 0
   isChild: 0
   duckDirection: 0
+  beMovable: 0

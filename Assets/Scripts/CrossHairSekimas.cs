@@ -19,7 +19,7 @@ public class CrossHairSekimas : MonoBehaviour
     {
         Vector3 point = new Vector3();
 
-        point = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
+        point = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         crosshair.transform.position = point;
     }
 }
