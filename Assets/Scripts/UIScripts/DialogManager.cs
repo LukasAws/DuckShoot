@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using UnityEditor.Rendering;
 
 [System.Serializable]
 public class DialogEntry
@@ -16,13 +18,22 @@ public class DialogManager : MonoBehaviour
     public DialogEntry[] dialogues; // Array of dialog entries
     public int[] scoreThresholds; // Array of score thresholds for each dialog entry
     public GunShootsDuck gunShootsDuckScript; // Reference to the GunShootsDuck script
-    
+
+    private GameManager gameManager;
     private bool dialogFinished = true; // Flag to prevent starting the same dialog again
     private int currentDialogueIndex = 0;
     private bool isTyping = false;
     public bool dialogStarted = false;
     private int nextDialogIndex = 0; // Index of the next dialog to be started
     private bool dialogBoxInMotion = false; // Flag to track if the dialog box is moving
+    private List<DuckMovement> tempDucks;
+
+    static float t = 0;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     void Update()
     {
@@ -62,6 +73,30 @@ public class DialogManager : MonoBehaviour
                 dialogFinished = true;
             }
         }
+
+        // ducks stop for dialog
+        if (dialogStarted)
+        {
+            tempDucks = FindObjectsOfType<DuckMovement>().ToList<DuckMovement>();
+            foreach (var duck in tempDucks)
+            {
+                duck.speed = Mathf.SmoothStep(gameManager.duckSpeed, 0, t);
+            }
+            if(t<=1)
+            t += 1f * Time.deltaTime;
+            
+        } else if (!dialogStarted && FindObjectOfType<DuckMovement>().speed != gameManager.duckSpeed)
+        {
+            tempDucks = FindObjectsOfType<DuckMovement>().ToList<DuckMovement>();
+            foreach (var duck in tempDucks)
+            {
+                duck.speed = Mathf.SmoothStep(gameManager.duckSpeed, 0, t);
+            }
+            if(t>=0)
+            t -= 1f * Time.deltaTime;
+        }
+
+        
     }
 
     private int currentLineIndex = 0; // Index of the current line being displayed

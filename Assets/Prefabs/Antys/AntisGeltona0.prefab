@@ -198,7 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duckSpawner: {fileID: 0}
+  speed: 10
   isShot: 0
-  speed: 5
   isChild: 0
-  isMother: 0
+  isThrowable: 0
+  duckDirection: 0
+  beMovable: 1

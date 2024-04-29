@@ -4,11 +4,10 @@ public class DuckMovement : MonoBehaviour
 {
     public DuckSpawner duckSpawner;
 
-    private float x = 2;
-    [SerializeField]
-    float speed = 15f;
     float t = 0;
 
+    private float x = 2;
+    public float speed;
     public bool isShot = false;
     public bool isChild = false;
     public bool isThrowable = false;
@@ -17,11 +16,13 @@ public class DuckMovement : MonoBehaviour
 
     public bool beMovable = true;
 
+    private GameManager gameManager;
     Quaternion originalRot;
     // Start is called before the first frame update
     void Start()
     {
         originalRot = transform.rotation;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,16 @@ public class DuckMovement : MonoBehaviour
                     (transform.position.x < -8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left) ||
                     (transform.position.x > 8f && duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Right)
                 )
+            {
+                if (!isShot && !isChild)
+                {
+                    if(FindAnyObjectByType<GunShootsDuck>().score>0 && !FindAnyObjectByType<DialogManager>().dialogStarted)
+                    FindAnyObjectByType<GunShootsDuck>().score--;
+                }
                 Destroy(this.gameObject); // when reached edge - destroy it
+
+            }
+
 
             if (t < 1f && isShot && !isChild)
             {

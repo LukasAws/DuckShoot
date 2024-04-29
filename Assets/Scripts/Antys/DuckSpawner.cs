@@ -6,17 +6,19 @@ using UnityEngine;
 public class DuckSpawner : MonoBehaviour
 {
     public DuckDirection spawnerDuckDirection;
-
     public GameObject[] antys;
+
+    private bool duckiesSpawnable;
+    private int duckyProbability;
     private Transform spawnerTransform;
-
-    public bool duckiesSpawnable;
-
-    GameObject lastDuckSpawned;
+    private GameObject lastDuckSpawned;
 
  
     void Start()
     {
+        duckiesSpawnable = FindObjectOfType<GameManager>().isDuckySpawnable;
+        duckyProbability = FindObjectOfType<GameManager>().duckySpawnProbability;
+
         spawnerTransform = transform;
 
 
@@ -71,7 +73,7 @@ public class DuckSpawner : MonoBehaviour
     private void SpawnDuckies(GameObject newAntis, GameObject selectedAntis)
     {
         int doesDuckieSpawn = Random.Range(0, 100);
-        if (doesDuckieSpawn <= 10 && duckiesSpawnable)
+        if (doesDuckieSpawn <= duckyProbability && duckiesSpawnable)
         {
             int numberOfDuckies = Random.Range(1, 6);
             float offsetSize = 0.25f;
