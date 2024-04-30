@@ -34,28 +34,30 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
 
         if (score >= scoreThresholdToProgress)
-            StartCoroutine(CloseCurtainsAndChangeScene());
+            StartCoroutine(CloseCurtainsAndFadeOut());
     }
 
-    IEnumerator CloseCurtainsAndChangeScene()
+    IEnumerator CloseCurtainsAndFadeOut()
     {
         // Trigger the curtain animations
         leftCurtainAnimator.SetBool("close", true);
         rightCurtainAnimator.SetBool("close", true);
 
         // Wait for the curtains to fully close (adjust the time to match the animation length)
-        yield return new WaitForSeconds(2.0f);  // Assume animation takes 2 seconds to complete
+
+        yield return new WaitForSeconds(0.0f);
 
         // Optionally fade the screen to black
         StartCoroutine(FadeOutScreen());
 
+        yield return new WaitForSeconds(2.0f);  // Assume animation takes 2 seconds to complete
         // Load the next scene
         SceneManager.LoadScene("LevelFinished");
     }
 
     IEnumerator FadeOutScreen()
     {
-        float duration = 1.0f; // Duration in seconds
+        float duration = 2.0f; // Duration in seconds
         float currentTime = 0f;
         Color originalColor = fadeOverlay.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1);
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
             float alpha = Mathf.Lerp(0, 1, currentTime / duration);
             fadeOverlay.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             yield return null;
+
+
         }
     }
 }

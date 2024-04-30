@@ -25,12 +25,9 @@ public class GunShootsDuck : MonoBehaviour
                     if (!hitObject.GetComponent<DuckMovement>().isShot && !hitObject.GetComponent<DuckMovement>().isChild)
                     {
                         if (hitObject.GetComponent<DuckMovement>().isThrowable)
-                        {
                             score += 5;
-
-                        } else
-
-                        score++;
+                        else
+                            score++;
 
                         hitObject.GetComponent<DuckMovement>().isShot = true;
                     }

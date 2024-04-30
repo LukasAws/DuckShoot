@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 319b62f1755c75942b48558b8b75d8a7
+guid: 3c41e9c3b6720284893068a67ef9accc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,19 +69,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -121,28 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Ducky Frenzy_0
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 219
-        width: 109
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c20e7f11ef9776f41a7c528b54a89189
-      internalID: 2006708986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -153,18 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Ducky Frenzy_0: 2006708986
-      Ducky Frenzy_1: 936476897
-      Ducky Frenzy_10: 1398887952
-      Ducky Frenzy_2: 1448491224
-      Ducky Frenzy_3: 1782488436
-      Ducky Frenzy_4: -1630202140
-      Ducky Frenzy_5: -1304062926
-      Ducky Frenzy_6: 2135758924
-      Ducky Frenzy_7: -1349666086
-      Ducky Frenzy_8: -1185779620
-      Ducky Frenzy_9: 13309636
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
