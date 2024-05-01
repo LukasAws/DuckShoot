@@ -16,15 +16,21 @@ public class GameManager : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreText;
 
+    public int shotsFired;
+    public int thrownDucksShot;
+
     public int scoreThresholdToProgress = 100;
 
     public Animator leftCurtainAnimator;
     public Animator rightCurtainAnimator;
+
+    private GunShootsDuck gunScript;
     public Image fadeOverlay; // Assuming there's a UI Image to darken the screen
 
     private void Awake()
     {
-        score = FindAnyObjectByType<GunShootsDuck>().score;
+        gunScript = FindAnyObjectByType<GunShootsDuck>();
+        score = gunScript.score;
     }
 
     // Update is called once per frame
@@ -51,6 +57,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeOutScreen());
 
         yield return new WaitForSeconds(2.0f);  // Assume animation takes 2 seconds to complete
+
+        shotsFired = gunScript.shotsFired;
+        thrownDucksShot = gunScript.thrownDucksShot;
+
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("ShotsFired", shotsFired);
+        PlayerPrefs.SetInt("ThrownDucksShot", thrownDucksShot);
         // Load the next scene
         SceneManager.LoadScene("LevelFinished");
     }
@@ -68,8 +81,6 @@ public class GameManager : MonoBehaviour
             float alpha = Mathf.Lerp(0, 1, currentTime / duration);
             fadeOverlay.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             yield return null;
-
-
         }
     }
 }

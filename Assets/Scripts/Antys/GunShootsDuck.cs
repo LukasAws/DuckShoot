@@ -3,7 +3,9 @@ using UnityEngine;
 public class GunShootsDuck : MonoBehaviour
 {
     public int score = 0;
-    public DialogManager manager;
+    public DialogManager? manager;
+    public int shotsFired = 0;
+    public int thrownDucksShot = 0;
 
     void Update()
     {
@@ -25,7 +27,10 @@ public class GunShootsDuck : MonoBehaviour
                     if (!hitObject.GetComponent<DuckMovement>().isShot && !hitObject.GetComponent<DuckMovement>().isChild)
                     {
                         if (hitObject.GetComponent<DuckMovement>().isThrowable)
+                        {
+                            thrownDucksShot++;
                             score += 5;
+                        }
                         else
                             score++;
 
@@ -34,6 +39,7 @@ public class GunShootsDuck : MonoBehaviour
 
                 }
             }
+            shotsFired++;
         }
     }
 }
