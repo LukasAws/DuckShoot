@@ -1,25 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrossHairSekimas : MonoBehaviour
 {
-    private GameObject crosshair;
-    private Camera cam;
-    // Start is called before the first frame update
+    private RectTransform crosshairRectTransform;
+    private RectTransform canvasRectTransform;
+
     void Start()
     {
-        crosshair = this.gameObject;
-        cam = Camera.main;
-        Cursor.visible = false;
+        crosshairRectTransform = GetComponent<RectTransform>();
+
+        // Find the UI Canvas
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (canvas != null)
+        {
+            canvasRectTransform = canvas.GetComponent<RectTransform>();
+        }
+        else
+        {
+            Debug.LogError("UI Canvas not found!");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 point = new Vector3();
+        if (canvasRectTransform == null || crosshairRectTransform == null)
+            return;
 
-        point = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-        crosshair.transform.position = point;
+        // Set the crosshair's position to the mouse position
+        crosshairRectTransform.position = Input.mousePosition;
     }
 }

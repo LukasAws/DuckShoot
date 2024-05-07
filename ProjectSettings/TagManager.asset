@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Antis
+  - Dog
   layers:
   - Default
   - TransparentFX
