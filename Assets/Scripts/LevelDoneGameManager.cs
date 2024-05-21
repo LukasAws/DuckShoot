@@ -25,6 +25,7 @@ public class LevelDoneGameManager : MonoBehaviour
 
     private void Start()
     {
+
         score.text = "Score: " + _score;
         shotsFired.text = "Shots fired: " + _shots;
         thrownDucksShot.text = "Thrown ducks hit: " + _ThrownDucksHit;
@@ -32,7 +33,7 @@ public class LevelDoneGameManager : MonoBehaviour
         StartCoroutine(OverlayAnim(true));
     }
 
-    IEnumerator OverlayAnim(bool fadeOut)
+    public IEnumerator OverlayAnim(bool fadeOut)
     {
         float duration = 2.0f; // Duration in seconds
         float currentTime = 0f;
@@ -57,7 +58,12 @@ public class LevelDoneGameManager : MonoBehaviour
         {
             if (!fadeOut)
             {
-                SceneManager.LoadScene("ArcadeGamePlay");
+
+                PlayerPrefs.SetInt("LevelID", PlayerPrefs.GetInt("LevelID") + 1);
+                if(PlayerPrefs.GetInt("LevelID") < 4)
+                    SceneManager.LoadScene($"ArcadeGamePlay {PlayerPrefs.GetInt("LevelID")}");
+                else
+                    SceneManager.LoadScene($"FinalLevel");
             }
             overlay.gameObject.SetActive(false);
         }
@@ -73,6 +79,6 @@ public class LevelDoneGameManager : MonoBehaviour
     public void ExitTheGame()
     {
         Debug.Log("Application Quit");
-        Application.Quit();
+        SceneManager.LoadScene("TitleScene");
     }
 }

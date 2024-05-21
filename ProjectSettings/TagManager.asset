@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Antis
   - Dog
+  - Trunk
   layers:
   - Default
   - TransparentFX

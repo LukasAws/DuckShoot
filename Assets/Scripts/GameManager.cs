@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(CloseCurtainsAndFadeOut());
     }
 
-    IEnumerator CloseCurtainsAndFadeOut()
+    public IEnumerator CloseCurtainsAndFadeOut()
     {
         // Trigger the curtain animations
         leftCurtainAnimator.SetBool("close", true);
@@ -65,10 +65,13 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("ShotsFired", shotsFired);
         PlayerPrefs.SetInt("ThrownDucksShot", thrownDucksShot);
         // Load the next scene
-        SceneManager.LoadScene("LevelFinished");
+        if(PlayerPrefs.GetInt("LevelID") < 4)
+            SceneManager.LoadScene("LevelFinished");
+        else
+            SceneManager.LoadScene("FinalLevel");
     }
 
-    IEnumerator FadeOutScreen()
+    public IEnumerator FadeOutScreen()
     {
         float duration = 2.0f; // Duration in seconds
         float currentTime = 0f;
@@ -82,5 +85,10 @@ public class GameManager : MonoBehaviour
             fadeOverlay.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             yield return null;
         }
+    }
+
+    public void FadingCoroutine()
+    {
+        StartCoroutine(CloseCurtainsAndFadeOut());
     }
 }
