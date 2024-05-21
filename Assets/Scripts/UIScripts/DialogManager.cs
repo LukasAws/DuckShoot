@@ -29,10 +29,12 @@ public class DialogManager : MonoBehaviour
     private List<DuckMovement> tempDucks;
 
     static float t = 0;
+    private float orgSpeed;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        orgSpeed = gameManager.duckSpeed;
     }
 
     void Update()
@@ -80,17 +82,18 @@ public class DialogManager : MonoBehaviour
             tempDucks = FindObjectsOfType<DuckMovement>().ToList<DuckMovement>();
             foreach (var duck in tempDucks)
             {
-                duck.speed = Mathf.SmoothStep(gameManager.duckSpeed, 0, t);
+                gameManager.duckSpeed = Mathf.SmoothStep(orgSpeed, 0, t);
             }
+
             if(t<=1)
             t += 1f * Time.deltaTime;
             
-        } else if (!dialogStarted && FindObjectOfType<DuckMovement>().speed != gameManager.duckSpeed)
+        } else if (!dialogStarted && FindObjectOfType<DuckMovement>().duckSpawner.speed != orgSpeed)
         {
             tempDucks = FindObjectsOfType<DuckMovement>().ToList<DuckMovement>();
             foreach (var duck in tempDucks)
             {
-                duck.speed = Mathf.SmoothStep(gameManager.duckSpeed, 0, t);
+                gameManager.duckSpeed = Mathf.SmoothStep(orgSpeed, 0, t);
             }
             if(t>=0)
             t -= 1f * Time.deltaTime;

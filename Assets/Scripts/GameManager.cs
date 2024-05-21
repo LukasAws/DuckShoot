@@ -21,11 +21,16 @@ public class GameManager : MonoBehaviour
 
     public int scoreThresholdToProgress = 100;
 
+
     public Animator leftCurtainAnimator;
     public Animator rightCurtainAnimator;
 
     private GunShootsDuck gunScript;
     public Image fadeOverlay; // Assuming there's a UI Image to darken the screen
+
+    public float probabilityOfThrownDuck = 0;
+    public float randomFloat;
+    public DogAnimationController dogAC;
 
     private void Awake()
     {
@@ -41,6 +46,13 @@ public class GameManager : MonoBehaviour
 
         if (score >= scoreThresholdToProgress)
             StartCoroutine(CloseCurtainsAndFadeOut());
+
+        if(randomFloat < probabilityOfThrownDuck)
+        {
+            probabilityOfThrownDuck = 0;
+            dogAC.TriggerDogMove();
+        }
+
     }
 
     public IEnumerator CloseCurtainsAndFadeOut()
@@ -90,5 +102,10 @@ public class GameManager : MonoBehaviour
     public void FadingCoroutine()
     {
         StartCoroutine(CloseCurtainsAndFadeOut());
+    }
+
+    public float GetRandFloat()
+    {
+        return Random.Range(0,1f);
     }
 }

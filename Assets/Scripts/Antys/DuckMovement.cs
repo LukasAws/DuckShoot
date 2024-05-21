@@ -6,8 +6,6 @@ public class DuckMovement : MonoBehaviour
 
     float t = 0;
 
-    private float x = 2;
-    public float speed;
     public bool isShot = false;
     public bool isChild = false;
     public bool isThrowable = false;
@@ -16,13 +14,11 @@ public class DuckMovement : MonoBehaviour
 
     public bool beMovable = true;
 
-    private GameManager gameManager;
     Quaternion originalRot;
     // Start is called before the first frame update
     void Start()
     {
         originalRot = transform.rotation;
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -30,7 +26,7 @@ public class DuckMovement : MonoBehaviour
     {
         if (beMovable)
         {
-            x = GetAppropriateSpeed();
+            float x = GetAppropriateSpeed();
 
             if (duckSpawner.spawnerDuckDirection == DuckSpawner.DuckDirection.Left)
                 transform.position = new Vector3(transform.position.x - x, transform.position.y, transform.position.z);
@@ -71,11 +67,11 @@ public class DuckMovement : MonoBehaviour
     private float GetAppropriateSpeed()
     {
         if (isChild && this.transform.parent.GetComponent<DuckMovement>().isShot) // if mother shot - speed up
-            return 0.3f * speed * Time.deltaTime;
+            return 0.3f * duckSpawner.speed * Time.deltaTime;
         else if (isChild && !this.transform.parent.GetComponent<DuckMovement>().isShot) // if not - do nothing
             return 0;
         
-        return 0.5f * speed * Time.deltaTime; // return normal speed
+        return 0.5f * duckSpawner.speed * Time.deltaTime; // return normal speed
     }
 
 

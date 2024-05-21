@@ -13,11 +13,18 @@ public class DuckSpawner : MonoBehaviour
     private Transform spawnerTransform;
     private GameObject lastDuckSpawned;
 
+    public float speed;
+
+    internal GameManager gameManager;
+
  
     void Start()
     {
-        duckiesSpawnable = FindObjectOfType<GameManager>().isDuckySpawnable;
-        duckyProbability = FindObjectOfType<GameManager>().duckySpawnProbability;
+        gameManager = FindObjectOfType<GameManager>();
+        duckiesSpawnable = gameManager.isDuckySpawnable;
+        duckyProbability = gameManager.duckySpawnProbability;
+
+
 
         spawnerTransform = transform;
 
@@ -33,31 +40,22 @@ public class DuckSpawner : MonoBehaviour
     void Update()
     {
 
+        speed = gameManager.duckSpeed;
+
+
         if ((lastDuckSpawned == null || Vector3.Distance(lastDuckSpawned.transform.position, spawnerTransform.position) > 4f) && Equals(lastDuckSpawned))
         {
-            int random0Antis = UnityEngine.Random.Range(0, 3);
-            GameObject selectedAntis;
-            switch (random0Antis)
-            {
-                case 0:
-                    selectedAntis = antys[0];
-                    break;
-                case 1:
-                    selectedAntis = antys[1];
-                    break;
-                case 2:
-                    selectedAntis = antys[2];
-                    break;
-                default:
-                    selectedAntis = null;
-                    break;
-            }
+            int random0Antis = UnityEngine.Random.Range(0, antys.Length);
+            GameObject selectedAntis = antys[random0Antis];
+            
 
             GameObject newAntis = Instantiate<GameObject>(selectedAntis, spawnerTransform.position, spawnerTransform.rotation);
             newAntis.GetComponent<DuckMovement>().duckSpawner = this;
             newAntis.GetComponent<DuckMovement>().duckDirection = spawnerDuckDirection;
 
             lastDuckSpawned = newAntis;
+
+
 
             SpawnDuckies(newAntis, selectedAntis);
 

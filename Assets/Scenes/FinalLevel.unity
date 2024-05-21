@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf47e56f1eb05014284858d7b9c0bc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dogRectTransform: {fileID: 1289016343}
+  dogRectTransform: {fileID: 683234077}
   dialogBoxRectTransform: {fileID: 972293675}
   dogEndPosition: {x: 0, y: 0}
   dialogEndPosition: {x: 14.2, y: -56.91}

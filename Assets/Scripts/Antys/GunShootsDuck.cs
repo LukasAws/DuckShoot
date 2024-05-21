@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunShootsDuck : MonoBehaviour
@@ -6,6 +7,8 @@ public class GunShootsDuck : MonoBehaviour
     public DialogManager? manager;
     public int shotsFired = 0;
     public int thrownDucksShot = 0;
+    public GameManager gameManager;
+
 
     void Update()
     {
@@ -29,12 +32,16 @@ public class GunShootsDuck : MonoBehaviour
                         if (hitObject.GetComponent<DuckMovement>().isThrowable)
                         {
                             thrownDucksShot++;
-                            score += 5;
+                            score += 15;
                         }
                         else
                             score++;
 
+                        gameManager.probabilityOfThrownDuck += 0.03f;
+                        gameManager.randomFloat = gameManager.GetRandFloat();
+
                         hitObject.GetComponent<DuckMovement>().isShot = true;
+
                     }
 
                 }
