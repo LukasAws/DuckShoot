@@ -4,6 +4,7 @@ public class GunShootsDuckBossLevel : MonoBehaviour
 {
     public DialogManagerBossLevel manager;
     public int shotsFired = 0;
+    public AudioClip duckShotClip;
 
     void Update()
     {
@@ -24,6 +25,7 @@ public class GunShootsDuckBossLevel : MonoBehaviour
                     if (!hitObject.GetComponent<DuckMovementBossLevel>().isShot)
                     {
                         hitObject.GetComponent<DuckMovementBossLevel>().isShot = true;
+                        GetComponent<AudioSource>().PlayOneShot(duckShotClip);
                     }
 
                 }

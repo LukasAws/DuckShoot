@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ArcadeGamePlay 2.unity
     guid: 851892d87466c0f47a9da8e1ec114f78
   - enabled: 1
-    path: Assets/Scenes/ArcadeGamePlay 3(noUse).unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/LevelFinished.unity
     guid: c502c66d19030c441b470eaad59c0fd8
   - enabled: 1

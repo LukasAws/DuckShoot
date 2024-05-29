@@ -9,6 +9,14 @@ public class GunShootsDuck : MonoBehaviour
     public int thrownDucksShot = 0;
     public GameManager gameManager;
 
+    public AudioClip[] clips;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
 
     void Update()
     {
@@ -33,9 +41,13 @@ public class GunShootsDuck : MonoBehaviour
                         {
                             thrownDucksShot++;
                             score += 15;
+                            audioSource.PlayOneShot(clips[1]);
                         }
                         else
+                        {
                             score++;
+                            audioSource.PlayOneShot(clips[2]);
+                        }
 
                         gameManager.probabilityOfThrownDuck += 0.03f;
                         gameManager.randomFloat = gameManager.GetRandFloat();
@@ -47,6 +59,7 @@ public class GunShootsDuck : MonoBehaviour
                 }
             }
             shotsFired++;
+            audioSource.PlayOneShot(clips[0]);
         }
     }
 }

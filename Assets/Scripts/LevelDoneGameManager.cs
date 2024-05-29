@@ -26,9 +26,9 @@ public class LevelDoneGameManager : MonoBehaviour
     private void Start()
     {
 
-        score.text = "Score: " + _score;
-        shotsFired.text = "Shots fired: " + _shots;
-        thrownDucksShot.text = "Thrown ducks hit: " + _ThrownDucksHit;
+        score.text = "Taskai: " + _score;
+        shotsFired.text = "Issauti suviai: " + _shots;
+        thrownDucksShot.text = "mestu anciu nusauta: " + _ThrownDucksHit;
 
         StartCoroutine(OverlayAnim(true));
     }
@@ -60,7 +60,7 @@ public class LevelDoneGameManager : MonoBehaviour
             {
 
                 PlayerPrefs.SetInt("LevelID", PlayerPrefs.GetInt("LevelID") + 1);
-                if(PlayerPrefs.GetInt("LevelID") < 4)
+                if(PlayerPrefs.GetInt("LevelID") < 3)
                     SceneManager.LoadScene($"ArcadeGamePlay {PlayerPrefs.GetInt("LevelID")}");
                 else
                     SceneManager.LoadScene($"FinalLevel");

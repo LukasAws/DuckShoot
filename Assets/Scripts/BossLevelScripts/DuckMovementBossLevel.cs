@@ -39,15 +39,15 @@ public class DuckMovementBossLevel : MonoBehaviour
             InvokeRepeating("MoveDuck", 0, 0);
 
             if (
-                    (rectTransform.anchoredPosition.x < (float)-80 && duckSpawner.spawnerDuckDirection == DuckSpawnerBossLevel.DuckDirection.Left) ||
-                    (rectTransform.anchoredPosition.x > (float)2000 && duckSpawner.spawnerDuckDirection == DuckSpawnerBossLevel.DuckDirection.Right) &&
+                    (rectTransform.anchoredPosition.x < (float)-100 && duckSpawner.spawnerDuckDirection == DuckSpawnerBossLevel.DuckDirection.Left) ||
+                    (rectTransform.anchoredPosition.x > (float)2020 && duckSpawner.spawnerDuckDirection == DuckSpawnerBossLevel.DuckDirection.Right) &&
                     (!isTouchingGround)
                 )
             {
                 Destroy(this.gameObject); // when reached edge - destroy it
             gameManager.spawnTime = Time.time;
 
-        }
+            }
 
             if (isShot && !isTouchingGround && !hasTouchedGround)
             {

@@ -14,6 +14,8 @@ public class BossLevelGameManager : MonoBehaviour
     internal DuckMovementBossLevel duckMovement;
     internal RandomAnimationTrigger RAT;
 
+    public int damageStrength = 5;
+
     public Sprite fallingSprite;
 
     public HealthBar healthScript;
@@ -32,6 +34,8 @@ public class BossLevelGameManager : MonoBehaviour
 
     public Image fadeOverlay;
 
+    private AudioSource audioSource;
+
 
     //TODO:
     // Dialog system
@@ -42,12 +46,18 @@ public class BossLevelGameManager : MonoBehaviour
     {
         gunScript = FindAnyObjectByType<GunShootsDog>();
         score = gunScript.score;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         RAT = FindObjectOfType<RandomAnimationTrigger>();
-
+        AudioSource[] sources = FindObjectsByType<AudioSource>(0);
+        foreach(var source in sources)
+        {
+            source.volume = PlayerPrefs.GetFloat("GlobalVolume");
+        }
+        audioSource.volume = PlayerPrefs.GetFloat("GlobalVolume");
     }
 
 
@@ -81,6 +91,7 @@ public class BossLevelGameManager : MonoBehaviour
             //TEMPORARY :
             FadingCoroutine();
         }
+        audioSource.volume = PlayerPrefs.GetFloat("GlobalVolume") - fadeOverlay.color.a * PlayerPrefs.GetFloat("GlobalVolume");
     }
 
     public IEnumerator CloseCurtainsAndFadeOut()
@@ -91,12 +102,14 @@ public class BossLevelGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.0f);
 
         // Optionally fade the screen to black
-        StartCoroutine(FadeOutScreen());
+        
+            StartCoroutine(FadeOutScreen());
 
-        yield return new WaitForSeconds(2.0f);  // Assume animation takes 2 seconds to complete
+            yield return new WaitForSeconds(2.0f);  // Assume animation takes 2 seconds to complete
 
-        // Load the next scene
+            // Load the next scene
             SceneManager.LoadScene("LevelFinished 1");
+
     }
 
     public IEnumerator FadeOutScreen()

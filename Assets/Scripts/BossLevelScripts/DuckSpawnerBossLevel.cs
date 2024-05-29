@@ -33,7 +33,7 @@ public class DuckSpawnerBossLevel : MonoBehaviour
 
         if (FindAnyObjectByType<DuckMovementBossLevel>() is null && this.duckSpawnerID == gameManager.randomValueForSpawner)
         {
-            GameObject newAntis = Instantiate<GameObject>(antis, new Vector2(spawnerDuckDirection == DuckDirection.Right ? -80f : 2000f, 900f + Random.Range(-50f, 50f)), new Quaternion(0, spawnerDuckDirection == DuckDirection.Right ? 0 : 180, 0, 1));
+            GameObject newAntis = Instantiate<GameObject>(antis, new Vector2(spawnerDuckDirection == DuckDirection.Right ? -100f : 2020f, 900f + Random.Range(-50f, 50f)), new Quaternion(0, spawnerDuckDirection == DuckDirection.Right ? 0 : 180, 0, 1));
             newAntis.GetComponent<DuckMovementBossLevel>().duckSpawner = this;
             newAntis.GetComponent<DuckMovementBossLevel>().duckDirection = spawnerDuckDirection;
             newAntis.transform.SetParent(spawnerTransform.parent.parent, true);

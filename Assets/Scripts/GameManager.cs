@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // Needed for changing scenes
@@ -32,10 +33,23 @@ public class GameManager : MonoBehaviour
     public float randomFloat;
     public DogAnimationController dogAC;
 
-    private void Awake()
+    public GameObject menu;
+
+    private bool gameStopped = false;
+
+    public DialogManager dialogManager;
+    private float orgSpeed;
+
+    internal ButtonsScript buttonScript;
+
+    private void Start()
     {
+        buttonScript = FindObjectOfType<ButtonsScript>();
         gunScript = FindAnyObjectByType<GunShootsDuck>();
         score = gunScript.score;
+        orgSpeed = dialogManager.orgSpeed;
+
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("GlobalVolume");
     }
 
     // Update is called once per frame
@@ -47,11 +61,29 @@ public class GameManager : MonoBehaviour
         if (score >= scoreThresholdToProgress)
             StartCoroutine(CloseCurtainsAndFadeOut());
 
-        if(randomFloat < probabilityOfThrownDuck)
+        if(randomFloat < probabilityOfThrownDuck && !dialogManager.dialogStarted && score >= 40)
         {
             probabilityOfThrownDuck = 0;
             dogAC.TriggerDogMove();
+        } else if (score < 40)
+        {
+            probabilityOfThrownDuck = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameStopped = !gameStopped;
+            Time.timeScale = gameStopped ? 0 : 1;
+            ImmediateMenu();
+        }
+
+        //if (buttonScript.levelID == 0)
+        //{
+        //    buttonScript.levelID = 2;
+        //    PlayerPrefs.SetInt("LevelID", 2);
+        //}
+
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("GlobalVolume") - fadeOverlay.color.a * PlayerPrefs.GetFloat("GlobalVolume");
 
     }
 
@@ -63,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         // Wait for the curtains to fully close (adjust the time to match the animation length)
 
-        yield return new WaitForSeconds(0.0f);
+        //yield return new WaitForSeconds(2.0f);
 
         // Optionally fade the screen to black
         StartCoroutine(FadeOutScreen());
@@ -76,11 +108,16 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("ShotsFired", shotsFired);
         PlayerPrefs.SetInt("ThrownDucksShot", thrownDucksShot);
+
+
         // Load the next scene
-        if(PlayerPrefs.GetInt("LevelID") < 4)
+        if(PlayerPrefs.GetInt("LevelID") < 3)
+        {
             SceneManager.LoadScene("LevelFinished");
-        else
+        } else
+        {
             SceneManager.LoadScene("FinalLevel");
+        }
     }
 
     public IEnumerator FadeOutScreen()
@@ -107,5 +144,23 @@ public class GameManager : MonoBehaviour
     public float GetRandFloat()
     {
         return Random.Range(0,1f);
+    }
+
+    public void ImmediateMenuForButton()
+    {
+        gameStopped = !gameStopped;
+        Time.timeScale = gameStopped ? 0 : 1;
+        ImmediateMenu();
+    }
+
+    public void ImmediateMenu()
+    {
+        menu.SetActive(gameStopped);
+        dialogManager.orgSpeed = gameStopped ? 0f : 10f;
+    }
+
+    public void TitleScreen()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }

@@ -29,7 +29,7 @@ public class DialogManager : MonoBehaviour
     private List<DuckMovement> tempDucks;
 
     static float t = 0;
-    private float orgSpeed;
+    internal float orgSpeed;
 
     private void Awake()
     {

@@ -10,12 +10,14 @@ public class HealthBar : MonoBehaviour
     private Animator[] dogAnimators;
     private float colorMin;
     private float currentColor;
+    internal BossLevelGameManager gameManager;
 
     private void Awake()
     {
         colorMin = 166 / 255f;
         healthBarTransform = GetComponent<RectTransform>();
         dogAnimators = FindObjectsByType<Animator>(0);
+        gameManager = FindObjectOfType<BossLevelGameManager>();
     }
     private void Update()
     {
@@ -27,7 +29,7 @@ public class HealthBar : MonoBehaviour
         }
 
         healthBarTransform.localScale = new Vector3(health, 1, 1);
-        if (health < 1.0f && health != 0)
+        if (health < 1.0f && (health > 0.4f && gameManager.dialogManager.currentDialogueIndex < 3))
             health += 0.01f * Time.deltaTime;
 
         currentColor = health * colorMin;

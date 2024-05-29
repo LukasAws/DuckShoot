@@ -24,8 +24,6 @@ public class DuckSpawner : MonoBehaviour
         duckiesSpawnable = gameManager.isDuckySpawnable;
         duckyProbability = gameManager.duckySpawnProbability;
 
-
-
         spawnerTransform = transform;
 
 
@@ -55,10 +53,7 @@ public class DuckSpawner : MonoBehaviour
 
             lastDuckSpawned = newAntis;
 
-
-
             SpawnDuckies(newAntis, selectedAntis);
-
         }
 
     }
